@@ -3,6 +3,7 @@
     <%= f.text_field :name %>
     <%= f.text_area :description %>
     <%= f.number_field :price %>
+    <%= f.collection_select(:category_id, @categories, :id, :name) %>
     <%= f.submit 'Update' %>
   <% end %>
 
