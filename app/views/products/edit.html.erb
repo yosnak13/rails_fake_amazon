@@ -1,2 +1,9 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<h1>Update Products</h1>
+  <%= form_with model: @product do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_area :description %>
+    <%= f.number_field :price %>
+    <%= f.submit 'Update' %>
+  <% end %>
+
+  <%= link_to 'Back', product_path %>
