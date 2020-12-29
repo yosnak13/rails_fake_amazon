@@ -12,6 +12,10 @@ class ProductsController < ApplicationController
   end
 
   def create
+    @product = Product.new(product_params)
+    @product.category_id = 1 #sample_code
+    @product.save #save in db
+    redirect_to product_url @product
   end
 
   def edit
@@ -21,5 +25,10 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+  end
+
+ private
+  def product_params
+    params.require(:product).permit(:name, :description, :price)
   end
 end
