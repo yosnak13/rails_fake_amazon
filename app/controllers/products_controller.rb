@@ -36,8 +36,8 @@ class ProductsController < ApplicationController
   end
 
   def favorite
-    current_user.toggle_like!(product)
-    redirect_to products_url product
+    current_user.toggle_like!(@product)
+    redirect_to product_url @product
   end
 
  private
