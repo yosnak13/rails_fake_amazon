@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.page(params[:page]).per(PER)
+    @categories = Category.all
+    @major_category_names = Category.major_categories
   end
 
   def show
