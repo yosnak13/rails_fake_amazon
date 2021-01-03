@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.display_list(category_params, params[:page])
+    @category = Category.request_category(category_params)
     @categories = Category.all
     @major_category_names = Category.major_categories
   end
