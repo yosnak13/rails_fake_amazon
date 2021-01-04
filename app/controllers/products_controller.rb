@@ -73,6 +73,6 @@ class ProductsController < ApplicationController
   end
 
   def sort_params
-    params.permit(sort, :sort_category)
+    params.permit(:sort, :sort_category)
   end
 end
