@@ -25,8 +25,8 @@ class Product < ApplicationRecord
       "並び替え" => "",
       "価格の安い順" => "price asc",
       "価格の高い順" => "price desc",
-      "出品の古い順" => "update_at asc",
-      "出品の新しい順" => "update_at desc",
+      "出品の古い順" => "updated_at asc",
+      "出品の新しい順" => "updated_at desc",
     }
   }
 
