@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     if sort_params.present?
       @category = Category.request_category(sort_params[:sort_category])
       @products = Product.sort_products(sort_params, params[:page])
-    elsif
+    elsif params[:category].present?
       @category = Category.request_category(params[:category])
       @products = Product.category_products(@category, params[:page])
     else
