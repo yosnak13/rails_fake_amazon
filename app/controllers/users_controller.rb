@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
+  before_action :authenticate_user!
 
   def edit
   end
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
   def edit_password
   end
 
-  private
+private
 
   def set_user
     @user = current_user
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def password_set?
-    user.params[:password].present? && user_params[:password_confirmation].present? ?
+    user_params[:password].present? && user_params[:password_confirmation].present? ?
     true : false
   end
 end
