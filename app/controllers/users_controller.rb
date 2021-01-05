@@ -32,13 +32,12 @@ class UsersController < ApplicationController
   end
 
 private
-
   def set_user
     @user = current_user
   end
 
   def user_params
-    params.permit(:name, :email, :address, :phone, :password_confirmation)
+    params.permit(:name, :email, :address, :phone, :password, :password_confirmation)
   end
 
   def password_set?
