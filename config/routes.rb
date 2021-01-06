@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update] do
     collection do
       get 'cart', :to => 'shopping_carts#index'
+      post 'cart/create', :to => 'shopping_carts#create'
       get 'mypage', :to => 'users#mypage'
       get 'mypage/edit', :to => 'users#edit'
       get 'mypage/address/edit', :to => 'users#edit_adress'
