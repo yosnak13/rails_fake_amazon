@@ -19,11 +19,14 @@ class ShoppingCartsController < ApplicationController
     redirect_to product_url(@product)
   end
 
+  def update
+  end
+
 private
   def product_params
     params.permit(:product_id, :product, :price, :quantity)
   end
-  
+
   def set_cart
     @user_cart = ShoppingCart.set_user_cart(current_user)
   end
