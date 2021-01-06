@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    root :to => "users/sessions#new"
+    root :to => 'web#index'
     get 'singup', :to => 'users/registrations#new'
     get "verify", :to => "users/registrations#verify"
     get 'login', :to => 'users/sessions#new'
