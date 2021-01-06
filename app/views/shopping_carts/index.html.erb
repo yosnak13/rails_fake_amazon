@@ -48,5 +48,9 @@
       </div>
     </div>
 
+    <%= form_with url: cart_users_path , method: :delete, class: "d-flex justify-content-end mt-3" do |f| %>
+      <%= link_to "買い物を続ける", products_path, class: "btn samazon-favorite-button border-dark text-dark mr-3" %>
+      <%= f.submit "購入を確定する", class: "btn samazon-submit-button" %>
+    <% end %>
   </div>
 </div>
