@@ -9,6 +9,10 @@ class ShoppingCartsController < ApplicationController
     @total = @user_cart.total
   end
 
+  def show
+    @cart = ShoppingCart.find(user_id: current_user)
+  end
+
 private
   def set_cart
     @user_cart = ShoppingCart.set_user_cart(current_user)
