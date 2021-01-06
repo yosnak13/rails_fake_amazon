@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     collection do
       get 'cart', :to => 'shopping_carts#index'
       post 'cart/create', :to => 'shopping_carts#create'
-      delete 'cart', :to => 'shopping_cart#destroy'
+      delete 'cart', :to => 'shopping_carts#destroy'
       get 'mypage', :to => 'users#mypage'
       get 'mypage/edit', :to => 'users#edit'
       get 'mypage/address/edit', :to => 'users#edit_adress'
