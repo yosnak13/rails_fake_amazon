@@ -57,7 +57,9 @@
       <div class="row">
         <% @reviews.each do |review| %>
         <div class="offset-md-5 col-md-5">
+          <h3 class="review-score-color"><%= score_on_star(review.score) %></h3>
           <p class="h3"><%= review.content %></p>
+          <h4><%= review.user.name %></h4>
           <label><%= review.created_at %></label>
         </div>
         <% end %>
