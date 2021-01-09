@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   get "dashboard", :to => "dashboard#index"
   
   devise_for :users, :controllers => {
