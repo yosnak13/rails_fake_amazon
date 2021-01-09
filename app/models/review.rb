@@ -2,7 +2,8 @@ class Review < ApplicationRecord
   belongs_to :product
   belongs_to :user
 
-  scope :reviews_with_id, -> { includes([:product, :user]).where.not(product_id: nil) }
+  # scope :reviews_with_id, -> { includes([:product, :user]).where.not(product_id: nil) }
+  scope :reviews_with_id, -> { where.not(product_id: nil) }
   scope :star_repeat_select, -> {
     {
       '★★★★★' => 5,
@@ -10,7 +11,6 @@ class Review < ApplicationRecord
       '★★★' => 3,
       '★★' => 2,
       '★' => 1,
-
     }
   }
 
