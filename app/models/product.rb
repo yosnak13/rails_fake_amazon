@@ -3,9 +3,7 @@ class Product < ApplicationRecord
   has_many :reviews
   acts_as_likeable
 
-  PER = 15
-
-  scope :display_list, -> (page) { page(page).per(PER) }
+  extend DisplayList
   scope :on_category, -> (category) { where(category_id: category) }
   scope :sort_order, -> (order) { order(order) }
 
@@ -35,7 +33,7 @@ class Product < ApplicationRecord
   def reviews_new
     reviews.new
   end
-  
+
   def reviews_with_id
     reviews.reviews_with_id
   end
