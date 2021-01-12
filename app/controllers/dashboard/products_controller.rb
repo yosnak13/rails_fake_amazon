@@ -13,7 +13,7 @@ class Dashboard::ProductsController < ApplicationController
       @sorted = params[:sort]
     end
 
-    if params[:keyword] != null
+    if params[:keyword] != nil
       keyword = trim(params[:keyword])
       @total_count = Product.search_for_id_and_name(keyword).count
       @products = Product.search_for_id_and_name(keyword).sort_order(sort_query).display_list(params[:pages])
