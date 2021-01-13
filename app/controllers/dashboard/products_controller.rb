@@ -1,6 +1,6 @@
 class Dashboard::ProductsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_product, only: %w[show edit update destroy]
+  before_action :set_product, only: %w[index edit update destroy]
   layout "dashboard/dashboard"
 
   def index
@@ -34,7 +34,7 @@ class Dashboard::ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save
-    redirect_to _pathdashboard_products
+    redirect_to dashboard_products_path
   end
 
   def edit
