@@ -1,8 +1,9 @@
 <h1>商品管理</h1>
 <%= form_with url: dashboard_products_path, method: :get, local: true, class:"form-inline" do |f| %>
   並び替え
-  <%= if @sorted.present? %>
-    <%= f.select :dort, @sort_list, selected: @sorted, onChange: "javascript: this.form.submit();", class:"form-inline ml-2 form-control" %>
+  <% if @sorted.present? %>
+    <%= f.select :sort, @sort_list, selected: @sorted,
+    onChange: "javascript: this.form.submit();", class:"form-inline ml-2 form-control" %>
   <% else %>
     <%= f.select :sort, @sort_list, {}, onChange: "javascript: this.form.submit();", class:"form-inline ml-2 form-control" %>
   <% end %>
