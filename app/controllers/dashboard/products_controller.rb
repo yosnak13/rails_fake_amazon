@@ -1,9 +1,9 @@
 class Dashboard::ProductsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_product, only: %w[index edit update destroy]
+  before_action :set_product, only: %w[show edit update destroy]
   layout "dashboard/dashboard"
 
-  def index
+  def show
     sort_query = []
     @sorted = ""
 
