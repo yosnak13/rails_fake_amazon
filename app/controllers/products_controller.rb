@@ -23,25 +23,25 @@ class ProductsController < ApplicationController
     @star_repeat_select = Review.star_repeat_select
   end
 
-  def new
-    @product = Product.new
-    @categories = Category.all
-  end
+  # def new
+  #   @product = Product.new
+  #   @categories = Category.all
+  # end
 
-  def create
-    @product = Product.new(product_params)
-    @product.save
-    redirect_to product_url @product
-  end
+  # def create
+  #   @product = Product.new(product_params)
+  #   @product.save
+  #   redirect_to product_url @product
+  # end
 
-  def edit
-    @categories = Category.all
-  end
+  # def edit
+  #   @categories = Category.all
+  # end
 
-  def update
-    @product.update(product_params)
-    redirect_to product_url @product
-  end
+  # def update
+  #   @product.update(product_params)
+  #   redirect_to product_url @product
+  # end
 
   def destroy
     @product.destroy
