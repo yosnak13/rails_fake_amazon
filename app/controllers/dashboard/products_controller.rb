@@ -3,7 +3,7 @@ class Dashboard::ProductsController < ApplicationController
   before_action :set_product, only: %w[show edit update destroy]
   layout "dashboard/dashboard"
 
-  def show
+  def index
     sort_query = []
     @sorted = ""
 
@@ -24,7 +24,7 @@ class Dashboard::ProductsController < ApplicationController
     end
 
     @sort_list = Product.sort_list
-    redirect_to dashboard_products_path
+    # redirect_to dashboard_products_path
   end
 
   def new
