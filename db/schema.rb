@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_144600) do
+ActiveRecord::Schema.define(version: 2021_01_16_083833) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,11 @@ ActiveRecord::Schema.define(version: 2021_01_09_144600) do
     t.datetime "created_at"
     t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
     t.index ["liker_id", "liker_type"], name: "fk_likes"
+  end
+
+  create_table "major_categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "mentions", force: :cascade do |t|
