@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_16_083833) do
+ActiveRecord::Schema.define(version: 2021_01_16_084803) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name", null: false
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2021_01_16_083833) do
     t.string "major_category_name"
     t.string "name"
     t.text "description"
+    t.integer "major_category_id"
+    t.index ["major_category_id"], name: "index_categories_on_major_category_id"
   end
 
   create_table "follows", force: :cascade do |t|
