@@ -1,5 +1,5 @@
 <div class="w-75">
-  <%= form_with(model: @major_cateogry, url: dashboard_major_cateogires_path, local: true) do |f| %>
+  <%= form_with(model: @major_cateogry, url: dashboard_major_categories_path, local: true) do |f| %>
     <div class="form-group">
       <%= f.label :name, "親カテゴリ名" %>
       <%= f.text_field :name, class: "form-control" %>
@@ -44,5 +44,5 @@
       <% end %>
     </tbody>
   </table>
-  <%= paginate @major_cateogries %>
+  <%= paginate @major_categories %>
 </div>
