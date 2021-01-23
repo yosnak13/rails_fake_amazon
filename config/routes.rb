@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
+    resources :users, only: [:index, destroy]
     resources :major_categories, except: [:new]
     resources :categories, except: [:new]
     resources :products, except: [:show]
