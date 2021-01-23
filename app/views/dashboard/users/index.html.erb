@@ -1,6 +1,16 @@
 <div class="w-75">
   <h1>顧客一覧</h1>
 
+    <div class="w-75">
+      <%= form_with model:@users, url: dashboard_users_path, method: :get do |f| %>
+        <div class="d-flex align-items-center">
+          ID•氏名など
+        </div>
+        <%= f.text_area :keyword, class: "form_controll ml-2 w-50" %>
+        <%= f.submit "検索", class: "btn samazon-submit-button" %>
+      <% end %>
+    </div>
+
   <table class="table mt-5">
     <thead>
       <tr>
