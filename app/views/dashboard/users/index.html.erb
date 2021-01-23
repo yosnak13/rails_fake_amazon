@@ -14,7 +14,7 @@
   <table class="table mt-5">
     <thead>
       <tr>
-        <th scope="col" class="w-25">ID</th>
+        <th scope="col" class="w-25">ID</td>
         <th scope="col">名前</th>
         <th scope="col">メールアドレス</th>
         <th scope="col">電話番号</th>
@@ -28,6 +28,15 @@
         <th><%= user.name %></th>
         <th><%= user.email %></th>
         <th><%= user.phone %></th>
+        <td>
+          <%= form_with model: user, url: dashboard_users_path, local: true do |f| %>
+            <% if user.deleted_flg %>
+              <%= f.submit "復帰", class: "btn dashboard-delete-link" %>
+            <% else %>
+              <%= f.submit "削除", class: "btn dashboard-delete-link" %>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
