@@ -1,24 +1,8 @@
-# README
+# 教材練習
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Railsを使ってアマゾン風のECサイトを作ります。
 
-Things you may want to cover:
+* Ruby 2.6.5p114 (2019-10-01 revision 67812) [x86_64-darwin20]
 
-* Ruby version
+* Rails 5.2.4.2
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
