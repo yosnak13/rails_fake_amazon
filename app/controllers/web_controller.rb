@@ -15,7 +15,7 @@ class WebController < ApplicationController
 
     @major_category_names = Category.major_categories
     @categories = Category.all
-    @recently_products + Product.recently_products(PRODUCTS_PER_PAGE)
+    @recently_products = Product.recently_products(PRODUCTS_PER_PAGE)
   end
 
   private
