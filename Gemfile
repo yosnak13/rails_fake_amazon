@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # deviseを使用できる
 gem 'devise'
 
+# binding.pry
+gem 'pry-rails'
+
 # bootstrapを使用できる
 gem 'bootstrap'
 gem 'jquery-rails'
