@@ -6,11 +6,11 @@
     <div class="col-9">
       <h1>おすすめ商品</h1>
       <div class="row">
-      
+
         <% @recommend_products.each do |recommend_product| %>
           <div class="col-4">
-            <%= link_to product_path(recently_product) do %>
-              <%= image_tag "/image/dummy.png", class: "img-thumbnail" %>
+            <%= link_to product_path(recommend_product) do %>
+              <%= image_tag "/images/dummy.png", class: "img-thumbnail" %>
             <% end %>
             <div class="row">
               <div class="col-12">
