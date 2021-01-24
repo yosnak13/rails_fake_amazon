@@ -9,6 +9,7 @@ product_ids.each do
     description: product_name,
     price: product_ids[array_number],
     category_id: category_ids[array_number]
+    recommend_flag: false
   )
   array_number += 1
 end
