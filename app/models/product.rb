@@ -6,6 +6,15 @@ class Product < ApplicationRecord
   extend DisplayList
   scope :on_category, -> (category) { where(category_id: category) }
   scope :sort_order, -> (order) { order(order) }
+  #idとnameにviewで取得したkeywordに合致する値を探すscopeを定義したい。値がなければallを返す
+  scope :search_for_id_and_name, -> (keyword) { where(id: keyword).or(where(name: keyword)) if keyword.present? }
+  # scope :search_for_id_and_name, -> (keyword) do
+  #   if keyword.present?
+  #     where(id: keyword).or(where(name: keyword))
+  #   else
+  #     all
+  #   end
+  # end
 
   scope :category_products, -> (category, page) {
     on_category(category).

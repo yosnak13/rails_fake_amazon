@@ -8,13 +8,16 @@ class Dashboard::ProductsController < ApplicationController
     @sorted = ""
 
     if params[:sort].present?
-      slices = split(' ', params[:sort])
-      sort_query[slices[0]] = slices[1]
+      # slices = split(' ', params[:sort]) => 教材の間違い？
+      slices = params[:sort].split
+      # sort_query[slices[0]] = slices[1] => 教材の間違い？
+      sort_query = slices[0..1]
       @sorted = params[:sort]
     end
 
     if params[:keyword] != nil
-      keyword = trim(params[:keyword])
+      # keyword = trim(params[:keyword]) => 教材の間違い？
+      keyword = params[:keyword].strip
       @total_count = Product.search_for_id_and_name(keyword).count
       @products = Product.search_for_id_and_name(keyword).sort_order(sort_query).display_list(params[:pages])
     else
@@ -24,7 +27,7 @@ class Dashboard::ProductsController < ApplicationController
     end
 
     @sort_list = Product.sort_list
-    # redirect_to dashboard_products_path
+    # redirect_to dashboard_products_path  => 教材の間違い？無限ループします
   end
 
   def new
