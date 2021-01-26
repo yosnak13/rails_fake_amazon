@@ -2,10 +2,9 @@
 <%= form_with url: dashboard_products_path, method: :get, local: true, class:"form-inline" do |f| %>
   並び替え
   <% if @sorted.present? %>
-    <%= f.select :sort, @sort_list, selected: @sorted,
-    onChange: "javascript: this.form.submit();", class:"form-inline ml-2 form-control" %>
+    <%= f.select :sort, @sort_list, selected: @sorted, class:"form-inline ml-2 form-control" %>
   <% else %>
-    <%= f.select :sort, @sort_list, {}, onChange: "javascript: this.form.submit();", class: "form-inline ml-2 form-control" %>
+    <%= f.select :sort, @sort_list, {}, class: "form-inline ml-2 form-control" %>
   <% end %>
 <% end %>
 <div class="w-75 mt-2">
