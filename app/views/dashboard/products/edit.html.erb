@@ -1,7 +1,7 @@
 <div class="w-50">
   <h1>商品登録</h1>
 
-  <%= form_with model: @product, url: dashboard_products_path(@product), local: true do |f| %>
+  <%= form_with model: @product, url: dashboard_product_path(@product), local: true do |f| %>
     <div class="form-inline mt-4 mb-4 row">
       <%= f.label :name, "商品名", class: "col-2 d-flex justify-content-start" %>
       <%= f.text_field :name, class: "form-control col-8" %>
