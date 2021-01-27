@@ -1,12 +1,12 @@
 class Dashboard::CategoriesController < ApplicationController
   before_action :authenticate_admin!, except: :index
   before_action :set_category, only: %w[show edit update destroy]
+  before_action :set_major_category, only: %w[index edit]
   layout 'dashboard/dashboard'
 
   def index
     @category = Category.new
     @categories = Category.display_list(params[:page])
-    @major_categories = MajorCategory.all
   end
 
   def show
@@ -35,6 +35,10 @@ class Dashboard::CategoriesController < ApplicationController
 private
   def set_category
     @category = Category.find(params[:id])
+  end
+
+  def set_major_category
+    @major_categories = MajorCategory.all
   end
 
   def category_params
