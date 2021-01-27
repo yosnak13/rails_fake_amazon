@@ -16,6 +16,12 @@ class Dashboard::MajorCategoriesController < ApplicationController
     redirect_to dashboard_major_categories_path
   end
 
+  def update
+    @major_category.update(major_category_params)
+    @major_category.save
+    redirect_to dashboard_major_categories_path
+  end
+
   def edit
   end
 
@@ -31,7 +37,6 @@ private
   end
 
   def major_category_params
-    # params.require(:major_category).permit(:name, :description)
-    params.permit(:name, :description)
+    params.require(:major_category).permit(:name, :description)
   end
 end
