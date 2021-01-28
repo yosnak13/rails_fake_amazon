@@ -4,4 +4,5 @@ class ShoppingCartItem < ApplicationRecord
   scope :bought_items, -> (item_ids) { where(item_id: item_ids) }
   scope :order_updated_at_desc, -> { order(updated_at: :desc) }
   scope :user_cart_item_ids, -> (user_shoppingcart) { where(owner_id: user_shoppingcart).pluck(:item_id) }
+  scope :keep_item_ids, -> (user_cart_items) { where(owner_id: user_cart_items) }
 end
