@@ -27,9 +27,9 @@
       <% @orders.each do |order| %>
       <tr>
         <td class="align-middle" scope="row"><%= order[0] %></td>
-        <td class="align-middle"><%= order[1][:user_name] %></td>
-        <td class="align-middle"><%= order[1][:update_at] %></td>
-        <td class="align-middle"><%= order[1][:price_total] %></td>
+        <td class="align-middle"><%= order[0][:user_name] %></td>
+        <td class="align-middle"><%= order[0][:update_at] %></td>
+        <td class="align-middle"><%= order[0][:price_total] %></td>
       </tr>
       <% end %>
     </tbody>
