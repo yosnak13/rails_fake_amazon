@@ -5,6 +5,7 @@ class ShoppingCart < ApplicationRecord
                                user_cart.nil? ? ShoppingCart.create(user_id: user.id)
                                               : user_cart }
   scope :bought_cart_ids, -> { where(buy_flag: true).pluck(:id) }
+  # idカラムから、変数を含む文字列を検索
   scope :bought_carts, -> (ids) { where("id LIKE ?", "%#{ids}%") }
   scope :bought_cart_user_ids_list, -> { where(buy_flag: true).pluck(:id, :user_id) }
 
@@ -14,6 +15,8 @@ class ShoppingCart < ApplicationRecord
       "日別" => "day",
     }
   }
+
+  scope :all_carts, -> { all }
 
   CARRIAGE=800
   FREE_SHIPPING=0
@@ -68,8 +71,7 @@ class ShoppingCart < ApplicationRecord
   end
 
   def self.get_orders(code = {})
-    code.present? ? bought_carts = bought_carts(code[:code])
-                  : bought_carts = ""
+    code.present? ? bought_carts = bought_carts(code[:code]) : bought_carts = all_carts
     return if bought_carts.blank?
     cart_users_list = bought_cart_user_ids_list
     user_ids_and_names_hash = User.where(id: cart_users_list).pluck(:id, :name).to_h
