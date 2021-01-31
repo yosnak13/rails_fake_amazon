@@ -71,7 +71,7 @@ class Dashboard::ProductsController < ApplicationController
   def download_csv
     send_file(
       "#{Rails.root}/public/csv/products.csv",
-      filename: "products.csv"
+      filename: "products.csv",
       type: :csv
     )
   end
