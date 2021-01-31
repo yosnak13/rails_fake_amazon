@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     resources :categories, except: [:new]
     resources :products, except: [:show]
     resources :orders, only: [:index]
+    collection do
+      get 'import/csv', :to => 'products#import'
+      post 'import/csv', :to => 'products#import_csv'
+      get 'import/csv_download', :to => 'products#download_csv'
+    end
   end
 
   devise_for :users, :controllers => {
