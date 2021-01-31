@@ -86,6 +86,21 @@ class ShoppingCart < ApplicationRecord
     return hash
   end
 
+  def self.get_current_user_orders(user)
+    user_bought_carts = user_bought_carts(user)
+    return "" if user_bought_carts.nil?
+
+    hash = Hash.new { |h,k| h[k] = {} }
+
+    user_bought_carts.each do |user_bought_cart|
+      hash[user_bought_cart.id][:code] = user_bought_cart.id
+      hash[user_bought_cart.id][:updated_at] = user_bought_cart.updated_at.to_datetime.strftime("%Y-%m-%d %H:%M:%S")
+      hash[user_bought_cart.id][:price_total] = user_bought_cart.total.fractional / 100
+      hash[user_bought_cart.id][:id] = user_bought_cart.id
+    end
+    return hash
+  end
+
   def tax_pct
     0
   end
