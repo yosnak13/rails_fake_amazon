@@ -41,6 +41,12 @@ class UsersController < ApplicationController
     redirect_to mypage_users_url
   end
 
+  def cart_history_index
+    @orders = ShoppingCart.get_current_user_orders(@user)
+    @orders_array = Kaminari.paginate_array(@orders.to_a).page(params[:page]).per(15)
+    @total = @orders.count
+  end
+
 private
   def set_user
     @user = current_user
