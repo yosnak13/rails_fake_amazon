@@ -87,7 +87,7 @@ class ShoppingCart < ApplicationRecord
   end
 
   def self.get_current_user_orders(user)
-    user_bought_carts = user_bought_carts(user)
+    user_bought_carts = bought_carts(@user)
     return "" if user_bought_carts.nil?
 
     hash = Hash.new { |h,k| h[k] = {} }
