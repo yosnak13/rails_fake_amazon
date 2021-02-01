@@ -47,6 +47,12 @@ class UsersController < ApplicationController
     @total = @orders.count
   end
 
+  def cart_history_show
+    cart = ShoppingCart.find(params[:num])
+    @cart_info = cart.cart_info
+    @cart_contents = cart.cart_contents
+  end
+
 private
   def set_user
     @user = current_user
