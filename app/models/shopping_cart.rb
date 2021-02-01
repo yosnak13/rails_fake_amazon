@@ -17,6 +17,8 @@ class ShoppingCart < ApplicationRecord
   }
 
   scope :all_carts, -> { all }
+  
+  scope :pluck_id_name_shipping_cost_flag_list, -> { where(carriage_flag: true).pluck(:id, :name) }
 
   CARRIAGE=800
   FREE_SHIPPING=0
@@ -99,6 +101,36 @@ class ShoppingCart < ApplicationRecord
       hash[user_bought_cart.id][:id] = user_bought_cart.id
     end
     return hash
+  end
+
+  def cart_info
+    hash = {}
+
+    hash[:code] = self.id
+    hash[:updated_at] = self.updated_at.strftime("%Y-%m-%d %H:%M:%S")
+    hash[:price] = self.total.to_i
+    hash[:quantity] = ShoppingCartItem.user_cart_items(self.id).count
+    return hash
+  end
+
+  def cart_contents
+    bought_cart_items = ShoppingCartItem.user_cart_items(self.id)
+    product_contents_list = Product.pluck_id_name_shipping_cost_flag_list(bought_cart_items)
+
+    hash = Hash.new { |h,k| h[k] = {} }
+    bought_cart_items.each do |bought_cart_item|
+      hash[bought_cart_item.id][:image] = product_contents_list[bought_cart_item.id][:image]
+      hash[bought_cart_item.id][:name] = product_contents_list[bought_cart_item.id][:name]
+      hash[bought_cart_item.id][:quantity] = bought_cart_item.quantity
+      hash[bought_cart_item.id][:price] = bought_cart_item.price_cents
+      hash[bought_cart_item.id][:shipping_cost] = product_contents_list[bought_cart_item.id][:carriage_flag] ?
+                                                                800 * hash[bought_cart_item.id][:quantity]
+                                                                : 0
+      hash[bought_cart_item.id][:product_total_price] = hash[bought_cart_item.id][:shipping_cost] +
+                                                        (hash[bought_cart_item.id][:quantity] *
+                                                        hash[bought_cart_item.id][:price])
+      return hash
+    end
   end
 
   def tax_pct
