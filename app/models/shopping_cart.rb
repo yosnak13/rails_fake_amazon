@@ -17,8 +17,8 @@ class ShoppingCart < ApplicationRecord
   }
 
   scope :all_carts, -> { all }
-  
-  scope :pluck_id_name_shipping_cost_flag_list, -> { where(carriage_flag: true).pluck(:id, :name) }
+
+  scope :pluck_id_name_shipping_cost_flag_list, -> { pluck(:id, :name, carriage_flag: true) }
 
   CARRIAGE=800
   FREE_SHIPPING=0
