@@ -65,6 +65,13 @@ class Product < ApplicationRecord
     end
   end
 
+  def self.pluck_id_name_shipping_cost_flag_list(bought_cart_items)
+    item_ids = bought_cart_items.map do |bought_cart_item|
+      bought_cart_item.item_id
+    end
+    Product.where(id: item_ids).where(carriage_flag: true).pluck(:id, :name)
+  end
+
   def reviews_new
     reviews.new
   end
